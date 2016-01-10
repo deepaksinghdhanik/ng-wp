@@ -1,5 +1,4 @@
-  <?php wp_head(); ?>
-
+	<?php wp_head(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +13,11 @@
 
     <meta name="keywords" content="">
 
-
 </head>
 
-<body>
+<body ng-app="ngWpApp">
+
+	<div data-ui-view></div>
 
     <div id="all">
 
