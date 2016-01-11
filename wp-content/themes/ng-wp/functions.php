@@ -17,7 +17,9 @@ function my_scripts() {
 	//scripts
 	wp_enqueue_script('jquery',get_stylesheet_directory_uri() . '/js/vendor/jquery-1.11.0.min.js',array(), '1.0.0', true ); 
 	wp_enqueue_script('angular',get_stylesheet_directory_uri() . '/js/vendor/angular.min.js',array(), '1.0.0', true ); 
-	wp_enqueue_script('angular-resource',get_stylesheet_directory_uri() . '/js/vendor/angular-resource.js',array(), '1.0.0', true ); 
+	wp_enqueue_script('sanitize',get_stylesheet_directory_uri() . '/js/vendor/angular-sanitize.min.js',array(), '1.0.0', true ); 
+	wp_enqueue_script('angular-filter',get_stylesheet_directory_uri() . '/js/vendor/angular-filter.min.js',array(), '1.0.0', true ); 
+	wp_enqueue_script('angular-resource',get_stylesheet_directory_uri() . '/js/vendor/angular-resource.min.js',array(), '1.0.0', true ); 
 	wp_enqueue_script('angular-ui-router',get_stylesheet_directory_uri() . '/js/vendor/angular-ui-router.js',array(), '1.0.0', true ); 
 	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() .'/js/vendor/bootstrap.min.js',array(), '1.0.0', true ); 
  	wp_enqueue_script('carousel',get_stylesheet_directory_uri() . '/js/vendor/owl.carousel.min.js',array(), '1.0.0', true );
@@ -27,13 +29,17 @@ function my_scripts() {
 	wp_enqueue_script('parallax',get_stylesheet_directory_uri() . '/js/vendor/jquery.parallax-1.1.3.js',array(), '1.0.0', true );
 	wp_enqueue_script('front',get_stylesheet_directory_uri() . '/js/front.js',array(), '1.0.0', true );
 	wp_enqueue_script('app',get_stylesheet_directory_uri() . '/app/app.js',array(), '1.0.0', true );
+	wp_enqueue_script('commonCtrl',get_stylesheet_directory_uri() . '/app/common/commonCtrl.js',array(), '1.0.0', true );
 	wp_enqueue_script('serviceCtrl',get_stylesheet_directory_uri() . '/app/service/serviceCtrl.js' ,array(), '1.0.0', true );
+	wp_enqueue_script('sliderCtrl',get_stylesheet_directory_uri() . '/app/slider/sliderCtrl.js' ,array(), '1.0.0', true );
 	wp_enqueue_script('serviceFactory',get_stylesheet_directory_uri() . '/app/service/serviceFactory.js' ,array(), '1.0.0', true );
 	
 	// Variables for app script
-	wp_localize_script( 'app', 'aeJS',
+	wp_localize_script( 'app', 'app',
 		array(
-			'api' =>trailingslashit(get_bloginfo( 'template_directory' )) . '/app',
+			'filePath' =>trailingslashit(get_bloginfo('template_directory')) . 'app',
+			'apiurl' =>trailingslashit(get_bloginfo('url')) . 'wp-json/wp/v2',
+			'path' =>trailingslashit(get_bloginfo('url'))
 		)
 	);
 	
@@ -62,7 +68,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
   }
   
   
-  add_filter( 'json_query_vars', 'filterJsonQueryVars' );
+add_filter( 'json_query_vars', 'filterJsonQueryVars' );
 
 function filterJsonQueryVars( $vars ) {
     $vars[] = 'meta_key';
