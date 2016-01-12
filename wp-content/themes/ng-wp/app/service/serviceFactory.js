@@ -6,8 +6,6 @@
 			  getServiceObject: getServiceObject
 		  };
 		  return service;
-
-
 	    	// get service
 		  function getServiceObject() {
 			  console.info(app.apiurl);
@@ -20,9 +18,6 @@
 						}
 					);
 				};
-  
-
-
 
 	  }]);
 

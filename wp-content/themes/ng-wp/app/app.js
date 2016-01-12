@@ -2,7 +2,7 @@
  'use strict';
   angular
 	.module('ngWpApp',
-				['ui.router', 'ngResource' , 'ngSanitize', 'angular.filter'])
+				['ui.router', 'ngResource' , 'ngSanitize', 'angular.filter', 'ui.bootstrap'])
 	.config(["$stateProvider",
 			"$urlRouterProvider"
 			,"$locationProvider",
@@ -16,8 +16,7 @@
 								url:'/',
 								views:{
 									'header':{
-										templateUrl:app.filePath+"/slider/slider.html",
-										controller: "sliderCtrl as slider"
+										templateUrl:app.filePath+"/header/header.html"
 									},'slider':{
 										templateUrl:app.filePath+"/slider/slider.html",
 										controller: "sliderCtrl as slider"
@@ -25,12 +24,10 @@
 									'service':{
 										templateUrl:app.filePath+"/service/servicelist.html",
 										controller: "serviceCtrl as service",
-									},,
-									'footer':{
-										templateUrl:app.filePath+"/service/servicelist.html",
-										controller: "serviceCtrl as service",
 									},
-									
+									'footer':{
+										templateUrl:app.filePath+"/footer/footer.html"
+									},
 									
 								}
 									
